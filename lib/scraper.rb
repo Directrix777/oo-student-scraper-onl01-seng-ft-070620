@@ -27,11 +27,11 @@ class Scraper
    hash = {profile_quote: doc.css(".vitals-text-container div").text, bio: doc.css(".details-container div.bio-block.details-block div div.description-holder p").text}
    if doc.css(".social-icon-container a") != nil
      doc.css(".social-icon-container a").each{|a|
-       if a.attribute("href").value..include?("twitter.com")
+       if a.attribute("href").value.include?("twitter.com")
          hash [:twitter] = a.attribute("href").value
-       elsif a.attribute("href").value..include?("linkedin.com")
+       elsif a.attribute("href").value.include?("linkedin.com")
          hash [:linkedin] = a.attribute("href").value
-       elsif a.attribute("href").value..include?("github.com")
+       elsif a.attribute("href").value.include?("github.com")
          hash [:github] = a.attribute("href").value
        else
          hash [:blog] = a.attribute("href").value
